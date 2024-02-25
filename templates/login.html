@@ -1,0 +1,75 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<style>
+            body {
+        background-color:Azure;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    input{
+      width: 50%;
+      padding: 8px;
+      margin-bottom: 16px; /* Adjust the margin as needed */
+      box-sizing: border-box;
+    }
+
+    button {
+      width:40%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    form {
+      width: 400px; /* Adjust the width as needed */
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+</style>
+</head>
+<body>
+
+<div class="container " >
+   <div class="row" >
+        <h2>Welcome to the world of Movies</h2>
+              {% for msg in messages %}
+                   <h4>{{msg}}</h4>
+              {% endfor %}
+</div>
+<div>
+        <form action=" " method="POST">
+            {% csrf_token %}
+            <div class="container">
+              <div>
+                <label for="username"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" >
+              </div>
+              <div>
+              <label for="password"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" name="password" >
+              </div>
+                <div>
+             <button type="submit" style="width:30%;height:50%" >Login</button>
+            </div>
+            <div> Not a valid user:Please <a href="{% url 'movieapp:register'%}"><h4>Register here</h4></h4></a></div>
+           </div>
+        </form>
+
+     </div>
+       </div>
+    </div>
+</body>
+</html>

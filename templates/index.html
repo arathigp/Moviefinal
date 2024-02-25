@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container">
+    <form method="post">
+    <h3>Are you a member of Movie World??</h3>
+        <h3><a href="{% url 'movieapp:login' %}">Sign up</a></h3>
+        </form>
+</div>
+
+<div class="container">
+    <div class = "row">
+        {% for i in movie %}
+        <div class = "col-md-3">
+            <div class="card" style="margin: 30px auto 95px auto; height:800px" width ="20rem" >
+               <img class="Card-image-top" style="height :350px "src = "{{i.poster.url}}" alt="..."><br>
+                  <div class="card-body">
+                     <h5 class="card-title">{{i.movie_title}}</h5>
+                      <p class="card-text">{{i.desc}}</p>
+                      <p class="card-text">{{i.release_date}}</p>
+                      <p class="card-text">{{i.actor}}</p>
+                      <p class="card-text">{{i.category}}</p>
+                      <p><a href="{{i.youtube_link}}">Watch Trailer</a></p>
+
+                  </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+

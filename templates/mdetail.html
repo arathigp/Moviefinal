@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Style for the card container */
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 20px;
+    }
+
+    /* Style for each card */
+    .card {
+      width: 200px;
+      margin: 10px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    /* Style for the movie image */
+    .card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    /* Style for the YouTube trailer link */
+    .card a {
+      display: block;
+      margin-top: 10px;
+      color: #4CAF50;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card-container">
+     {% for i in movie %}
+         <div class="card">
+         <img src="{{i.poster.url}}" alt="Movie 1">
+         <h3>{{i.movie_title}}</h3>
+         <p>{{i.desc}}</p>
+         <p>{{i.release_date}}</p>
+         <p>{{i.actors}}</p>
+         <p>{{i.category}}</p>
+         <a href="{{i.youtube_link}}">Watch Trailer</a>
+         <p><a href="{% url 'moviedetail:movie_update' i.id %}">Edit Movie</a></p>
+         <p><a href="{% url 'moviedetail:movie_delete' i.id %}">Delete Movie</a></p>
+         </div>
+     {% endfor %}
+</div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+         form {
+      width: 100%; /* Adjust the width as needed */
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    body {
+       background-color:Azure;
+      display: flex;
+<!--      justify-content: center;-->
+<!--      align-items: center;-->
+      height: 100vh;
+      margin: 0;
+    }
+    </style>
+</head>
+<body>
+<div>
+<form method="get" action="{% url 'moviedetail:movie_list' %}">
+    <label for="category">Filter by Category:</label>
+    <select name="category" id="category">
+        <option value="">All</option>
+        <option value="Action">Action</option>
+        <option value="Drama">Drama</option>
+        <option value="Comedy">Comedy</option>
+        <option value="Others">Others</option>
+    </select>
+    <input type="text" name="q" placeholder="Search">
+    <button type="submit">Search</button>
+{% for movie in movies %}
+   <h2>{{ movie.category }}</h2>
+   {{ movie.movie_title }}<br>
+   {{ movie.desc }}<br>
+   {{ movie.release_date }}<br>
+   {{ movie.actor }}<br>
+   <img src="{{ movie.poster.url }}" style="width:150px;height:150px">
+   <a href="{{i.youtube_link}}">Watch Trailer</a><br>
+   <a href="{% url 'moviedetail:add_review' movie.id %}">Add Review and Rating</a>
+    <ul>
+    {% for review in movie_reviews.movie.id %}
+        <li>{{ review.user.username }} - {{ review.text }} - Rating: {{ review.rating }}</li>
+    {% endfor %}
+</ul>
+{% endfor %}
+        </form>
+</div>
+</body>
+</html>

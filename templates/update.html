@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+         body {
+        background-color:Azure;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    form {
+      width: 400px; /* Adjust the width as needed */
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+
+    /* Hover effect */
+    .styled-button:hover {
+      background-color: white;
+      color: #4CAF50;
+    }
+            .styled-button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      background-color: #4CAF50; /* Green background color */
+      color: white; /* White text color */
+      border: 2px solid #4CAF50; /* Green border */
+      border-radius: 5px; /* Rounded corners */
+      cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<form method="POST" enctype="multipart/form-data">
+    <h3> You can edit your profile details from here</h3>
+    {% csrf_token %}
+    {{form.as_p}}
+    <input class="styled-button" type="submit" >
+
+</form>
+</body>
+</html>
